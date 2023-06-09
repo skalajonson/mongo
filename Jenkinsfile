@@ -13,7 +13,7 @@ pipeline {
         stage('create docker image mongo express') {
             steps {
                 git 'https://github.com/skalajonson/mongo-express.git'
-                withCredentials([usernamePassword(credentialsId: 'DockerHub-Credentials', usernameVariable: 'skalajonson', passwordVariable: 'q59p8w8c')]) {
+                withCredentials([usernamePassword(credentialsId: 'bc9d2cb8-91ca-43df-8e72-f5442ee81bc4', usernameVariable: 'skalajonson', passwordVariable: 'q59p8w8c')]) {
                 sh '''
                 docker build -t chikibevchik/mongo:mongo-express .
                 docker push chikibevchik/mongo:mongo-express
