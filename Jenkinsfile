@@ -2,6 +2,23 @@ pipeline {
     agent any
     
     stages {
+        stage('create docker image mongodb') {
+            steps {
+                sh '''
+                docker build -t chikibevchik/mongo:mongodb .
+                docker push chikibevchik/mongo:mongodb
+                '''
+            }
+        }
+        stage('create docker image mongo express') {
+            steps {
+                git 'https://github.com/skalajonson/mongo-express.git'
+                sh '''
+                docker build -t chikibevchik/mongo:mongo-express .
+                docker push chikibevchik/mongo:mongo-express
+                '''
+            }
+        }
         stage('Create docker network') {
             steps {
                 sh '''
