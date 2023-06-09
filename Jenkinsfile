@@ -19,7 +19,7 @@ pipeline {
         stage('run mongo express') {
             steps {
                 sh '''
-                docker run -d -p 8081:8081 -e ME_CONFIG_MONGODB_ADMINUSER=admin -e ME_CONFIG_MONGODB_ADMINPASSWORD=password --name mongo_express --net mongo-kakashka -e ME_CONFIG_MONGODB_SERVER=mongodb mongo-express:0.54.0
+                docker run --network mongo-kakashka -e ME_CONFIG_MONGODB_SERVER=some-mongo -p 8081:8081 mongo-express
                 '''
             }
         }
